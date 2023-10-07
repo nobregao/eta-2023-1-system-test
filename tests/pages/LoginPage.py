@@ -8,7 +8,7 @@ class LoginPage(Page):
     url = "https://www.saucedemo.com/"
 
     def __init__(self):
-        super(LoginPage, self).__init__(self.url)
+        super().__init__(self.url)
 
     def click_button_login(self):
         button = self.driver.find_element(By.ID, "login-button")
