@@ -13,7 +13,13 @@ class Page:
 
     def __init__(self, url="", driver=None, browser=None):
         self.url = url
-        self.driver = driver if driver is not None else self.possible_browsers[browser.strip().lower()]()
+        if driver is not None:
+            self.driver = driver
+        else:
+            if browser in self.possible_browsers:
+                self.driver = self.possible_browsers[browser.strip().lower()]()
+            else:
+                self.driver = self.possible_browsers["chrome"]()
 
     def open(self):
         self.driver.get(self.url)
