@@ -1,7 +1,10 @@
+import pytest
+
 class Test1:
 
-    def test_click_login_button(self, login_page):
-
+    @pytest.mark.parametrize('all_browsers', ['chrome', 'firefox'])
+    def test_click_login_button(self, run_all_browser):
+        login_page = run_all_browser
         login_page.click_button_login()
 
         assert login_page.is_url(), 'Aplicação não permaneceu na mesma página!'

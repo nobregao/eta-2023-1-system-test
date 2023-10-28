@@ -12,3 +12,6 @@ class CartPage(Page):
 
     def get_first_product_in_cart(self):
         return self.driver.find_element(By.CLASS_NAME, "inventory_item_name").text
+
+    def click_checkout(self):
+        self.driver.find_element(By.ID, "checkout").click()
