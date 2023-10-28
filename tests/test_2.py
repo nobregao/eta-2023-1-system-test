@@ -1,4 +1,4 @@
-from tests.pages.HomeProductPage import HomeProductPage
+from tests.pages.ProductPage import ProductPage
 
 
 class Test2:
@@ -7,7 +7,7 @@ class Test2:
 
         login_page.make_login()
 
-        home_product_page = HomeProductPage(driver=login_page.driver)
+        home_product_page = ProductPage(login_page.driver)
 
         assert home_product_page.is_url(), 'Aplicação não mostrou página de produtos!'
         assert home_product_page.is_logged(), 'Usuário não logado'

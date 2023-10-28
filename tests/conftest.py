@@ -11,3 +11,8 @@ def login_page():
     yield login_page
 
     login_page.close()
+
+@pytest.fixture
+def login_saucedemo(login_page):
+    login_page.make_login()
+    yield login_page

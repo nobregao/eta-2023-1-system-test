@@ -3,10 +3,12 @@ from selenium import webdriver
 
 class Page:
 
-    def __init__(self, url, driver=None):
+    def __init__(self, url="", driver=None):
         self.url = url
-        self.driver = driver if driver is not None else webdriver.Chrome()
-
+        if driver is not None:
+            self.driver = driver
+        else:
+            self.driver = webdriver.Chrome()
     def open(self):
         self.driver.get(self.url)
 
