@@ -3,12 +3,18 @@ from selenium import webdriver
 
 class Page:
 
-    def __init__(self, url="", driver=None):
+    possible_browsers = {
+        "chrome": webdriver.Chrome,
+        "firefox": webdriver.Firefox,
+        "safari": webdriver.Safari
+    }
+
+    # adding "--browser_selenium 'chrome'" in config for executing test case
+
+    def __init__(self, url="", driver=None, browser=None):
         self.url = url
-        if driver is not None:
-            self.driver = driver
-        else:
-            self.driver = webdriver.Chrome()
+        self.driver = driver if driver is not None else self.possible_browsers[browser.strip().lower()]()
+
     def open(self):
         self.driver.get(self.url)
 
